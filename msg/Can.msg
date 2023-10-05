@@ -1,0 +1,5 @@
+bool veh_ctrl_mode
+int8 veh_driving_state
+bool emergency_stop
+int8 battery_soc
+int8 veh_speed

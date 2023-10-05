@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>images/spring_cloud_logo.jpg</file>
+        <file>images/map.jpg</file>
+        <file>images/car.png</file>
+		<file>images/on_boarding.jpg</file>
+        <file>images/on_boarding_adult_icon.jpg</file>
+        <file>images/on_boarding_child_icon.jpg</file>
+        <file>images/fall_down_message.jpg</file>
+		<file>images/fall_down.jpg</file>
+		<file>images/surdden_stop_message.jpg</file>
+		<file>images/surdden_stop.jpg</file>
+		<file>images/finish_message.jpg</file>
+		<file>images/finish.jpg</file>
+		<file>images/wear_belt_message.jpg</file>
+		<file>images/wear_belt.jpg</file>
+		<file>images/sharp_turn_message.jpg</file>
+		<file>images/sharp_turn.jpg</file>
+		<file>images/handle_crash_message.jpg</file>
+		<file>images/handle_crash.jpg</file>
+    </qresource>
+</RCC>
