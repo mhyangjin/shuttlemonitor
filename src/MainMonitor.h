@@ -14,6 +14,9 @@
 #include "IntegrationSubscriber.h"
 #include "GPSSubscriber.h"
 #include "PositionMapper.h"
+#include "ConfigLoader.h"
+#include "MediaPlayer.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMonitor; }
 QT_END_NAMESPACE
@@ -43,7 +46,7 @@ private:
 	PositionMapper* positionMapper=NULL;
 	CarInfo *carInfo=NULL;
 	ros::MultiThreadedSpinner* spiner=NULL;
-
-
+	ConfigLoader *configLoader=NULL;
+	MediaPlayer* mediaPlayer=NULL;
 };
 #endif // MAINMONITOR_H

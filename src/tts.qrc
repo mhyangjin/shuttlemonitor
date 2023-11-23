@@ -1,0 +1,10 @@
+<RCC>
+    <qresource >
+        <file>tts/fall_down_message.mp3</file>
+		<file>tts/finish_message.mp3</file>
+		<file>tts/handle_crash_message.mp3</file>
+		<file>tts/sharp_turn_message.mp3</file>
+		<file>tts/surdden_stop_message.mp3</file>
+		<file>tts/wear_belt_message.mp3</file>
+    </qresource>
+</RCC>

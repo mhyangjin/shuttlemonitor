@@ -8,11 +8,16 @@
 
 #define pi 3.14159265358979323846
 
-Position::Position(double _lat, double _lon, int _x, int _y) {
+Position::Position(double _lat, double _lon, int _x, int _y, QString posAttr) {
 	latitude=_lat;
 	longitude=_lon;
 	x=_x;
 	y=_y;
+	pos_attr=posAttr;
+}
+
+QString Position::getPosAttr() {
+	return pos_attr;
 }
 /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 /*::  Function prototypes                                           :*/

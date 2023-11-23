@@ -7,9 +7,9 @@
 #include "StateManager.h"
 #include <iostream>
 
-StateManager::StateManager(Ui::MainMonitor *_ui)
+StateManager::StateManager(Ui::MainMonitor *_ui, QString carNo)
 :ui(_ui) {
-	ROS_INFO("StatManager::StateManager");
+	ROS_INFO("StatManager::StateManager %s", qPrintable(carNo));
 	for ( int i=0; i<7; i++) {
 		ROS_INFO("laod images %s", qPrintable(state_imgs[i]));
 		state_pixmaps[i].load(state_imgs[i]);
@@ -18,6 +18,7 @@ StateManager::StateManager(Ui::MainMonitor *_ui)
 	for ( int i=0; i<7; i++) {
 		message_pixmaps[i].load(msg_imgs[i]);
 	}
+	ui->label_car_no_data->setText(carNo);
 	setOnBoadingEnable(true);
 
 }
@@ -41,7 +42,7 @@ void StateManager::changeOnBoading(	int adult_male_count,
 
 	//sate board
 	string customers_string="총 " + to_string(customers) + " 탑승 중";
-	ui->label_state_img->setPixmap(state_pixmaps[States::ON_BOARDING]);
+	ui->label_state_img->setPixmap(state_pixmaps[::ON_BOARDING]);
 	ui->label_state_msg->setText(QString::fromStdString(customers_string));
 
 	//message board
@@ -53,7 +54,7 @@ void StateManager::changeOnBoading(	int adult_male_count,
 	ui->label_adult_male->setText(QString::fromStdString(adult_male_string));
 	ui->label_adult_female->setText(QString::fromStdString(adult_female_string));
 
-	string child_string = "성인 " + to_string(child_count) + " 명";
+	string child_string = "유아 " + to_string(child_count) + " 명";
 	string child_male_string = "남 " + to_string(child_male_count) + " 명";
 	string child_female_string = "여 " + to_string(child_female_count) + " 명";
 

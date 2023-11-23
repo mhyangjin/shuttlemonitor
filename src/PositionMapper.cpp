@@ -6,27 +6,15 @@
 //======================================================================*/
 #include "PositionMapper.h"
 
-PositionMapper::PositionMapper(Ui::MainMonitor *_ui)
-:ui(_ui){
-	positions.push_back( new Position(34.752818, 127.749523, 200,190));
-	positions.push_back( new Position(34.752176, 127.750285, 250,220));
-	positions.push_back( new Position(34.750036, 127.748405, 220,280));
-	positions.push_back( new Position(34.748999, 127.750010, 280,330));
-	positions.push_back( new Position(34.747901, 127.750081, 290,410));
-	positions.push_back( new Position(34.746908, 127.751485, 340,460));
-	positions.push_back( new Position(34.746076, 127.751564, 330,540));
-	positions.push_back( new Position(34.744949, 127.750406, 290,570));
-	positions.push_back( new Position(34.744319, 127.751223, 320,610));
-	positions.push_back( new Position(34.743808, 127.751971, 330,610));
-	positions.push_back( new Position(34.743167, 127.753864, 360,650));
-	positions.push_back( new Position(34.742376, 127.754984, 430,690));
-	positions.push_back( new Position(34.745423, 127.749120, 220,540));
-	positions.push_back( new Position(34.746156, 127.748219, 180,470));
-	positions.push_back( new Position(34.747737, 127.746627, 140,410));
-	positions.push_back( new Position(34.748830, 127.747477, 180,350));
-
+PositionMapper::PositionMapper(Ui::MainMonitor *_ui, ConfigLoader* _configLoader, MediaPlayer* _mediaPlayer,StateManager* _stateManager)
+:ui(_ui),
+configLoader(_configLoader),
+mediaPlayer(_mediaPlayer),
+stateManager(_stateManager){
+	positions=configLoader->getPositions();
+	maxDistance=configLoader->getPosisionResolution();
 	latest_pos = 0;
-	ui->label_car->move(200,190);
+	ui->label_car->move(200,180);
 }
 
 PositionMapper::~PositionMapper(){}
@@ -35,6 +23,17 @@ void PositionMapper::setPosition(double lat, double lon) {
 	Position* pos=findclosedPosition(lat, lon);
 	if ( pos != NULL) {
 		ui->label_car->move(pos->getX(),pos->getY());
+		if (pos->getPosAttr()=="sudden_stop" ) {
+			mediaPlayer->playMedia(States::SUDDEN_STOP);
+		}
+		if (pos->getPosAttr()=="curve" ) {
+			mediaPlayer->playMedia(States::SHARP_TURN);
+		}
+		if (latest_pos > 0 &&  pos->getPosAttr()=="finish" ) {
+			stateManager->changeFinish();
+			mediaPlayer->playMedia(States::FINISH);
+			latest_pos=0;
+		}
 	}
 	//찾지 못했다면 이동하지 않는다.
 }
@@ -76,5 +75,5 @@ Position* PositionMapper::findclosedPosition(double lat, double lon) {
 			return pos;
 		}
 	}
-	return pos;
+	return NULL;
 }

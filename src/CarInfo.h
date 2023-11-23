@@ -18,8 +18,10 @@ public:
     void setEmergencyStop(QString);
     void setBettery(int);
     void setDriveSpeed(int);
+	int getDriveSpeed();
 private:
     Ui::MainMonitor *ui;
 	QString carNo;
+	int Speed;
 };
 #endif

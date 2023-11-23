@@ -41,6 +41,27 @@ const QString  msg_imgs[7] = {
 	":img/images/finish_message.jpg",
 };
 
+// const QString  tts_mp3[7] = {
+// 	"/home/mhjin/project/catkin_ws/src/shuttle_monitor/src/tts/fall_down_message.mp3", //사용안함
+//     "/home/mhjin/project/catkin_ws/src/shuttle_monitor/src/tts/fall_down_message.mp3",
+//     "/home/mhjin/project/catkin_ws/src/shuttle_monitor/src/tts/handle_crash_message.mp3",
+// 	"/home/mhjin/project/catkin_ws/src/shuttle_monitor/src/tts/wear_belt_message.mp3",
+//     "/home/mhjin/project/catkin_ws/src/shuttle_monitor/src/tts/sharp_turn_message.mp3",
+//     "/home/mhjin/project/catkin_ws/src/shuttle_monitor/src/tts/surdden_stop_message.mp3",
+// 	"/home/mhjin/project/catkin_ws/src/shuttle_monitor/src/tts/finish_message.mp3",
+// };
+
+
+const QString  tts_mp3[7] = {
+	"qrc:tts/fall_down_message.mp3", //사용안함
+    "qrc:tts/fall_down_message.mp3",
+    "qrc:tts/handle_crash_message.mp3",
+	"qrc:tts/wear_belt_message.mp3",
+    "qrc:tts/sharp_turn_message.mp3",
+    "qrc:tts/surdden_stop_message.mp3",
+	"qrc:tts/finish_message.mp3",
+};
+
 const QString state_msgs[7]= {
 	"",
 	"긴급상황! 쓰러짐 사고 발생",
@@ -60,4 +81,15 @@ const QString msg_style[7]= {
 	"background-color:rgb(255,240,217);border-radius:5px;border: 1px outset rgb(186, 189, 182);",
 	"background-color:rgb(242,249,255);border-radius:5px;border: 1px outset rgb(186, 189, 182);",
 };
+
+
+// const QString msg_style[7]= {
+// 	"background-color:rgb(242,249,255);border-radius:5px;border: 1px outset rgb(186, 189, 182);",
+// 	"background-color:rgb(255,240,217);border-radius:5px;border: 1px outset rgb(186, 189, 182);",
+// 	"background-color:rgb(255,240,217);border-radius:5px;border: 1px outset rgb(186, 189, 182);",
+// 	"background-color:rgb(242,249,255);border-radius:5px;border: 1px outset rgb(186, 189, 182);",
+// 	"background-color:rgb(255,240,217);border-radius:5px;border: 1px outset rgb(186, 189, 182);",
+// 	"background-color:rgb(255,240,217);border-radius:5px;border: 1px outset rgb(186, 189, 182);",
+// 	"background-color:rgb(242,249,255);border-radius:5px;border: 1px outset rgb(186, 189, 182);",
+// };
 #endif

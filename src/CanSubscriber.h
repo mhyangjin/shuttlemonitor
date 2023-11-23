@@ -16,9 +16,12 @@
 #include <shuttle_monitor/IntergrateRecognition.h>
 #include "CarInfo.h"
 #include "StateManager.h"
+#include "MediaPlayer.h"
+#include "ConfigLoader.h"
 class CanSubscriber : public QThread {
 public:
-    CanSubscriber(ros::MultiThreadedSpinner*, CarInfo*, StateManager*);
+    CanSubscriber(ros::MultiThreadedSpinner*, CarInfo*, StateManager*,ConfigLoader*,
+	MediaPlayer*);
     void subscribeCallBack( const shuttle_monitor::Can&);
     void run();
 //signals:
@@ -31,6 +34,8 @@ private:
     QString topicName="/can";
 	CarInfo* carInfo=NULL;
 	StateManager* stateManager=NULL;
+	MediaPlayer* mediaPlayer=NULL;
+	ConfigLoader* configLoader=NULL;
 };
 
 #endif

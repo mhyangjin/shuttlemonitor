@@ -29,6 +29,11 @@ void CarInfo::setBettery(int remains) {
 	ui->label_battery_data->setText(QString::fromStdString(remainString));
 }
 void CarInfo::setDriveSpeed(int speed) {
+	Speed=speed;
 	string speedString = to_string(speed) + " Km/s";
 	ui->label_speed_data->setText(QString::fromStdString(speedString));
+}
+
+int CarInfo::getDriveSpeed() {
+	return Speed;
 }

@@ -7,11 +7,15 @@
 #include "IntegrationSubscriber.h"
 #include <sstream>
 
-IntegrationSubscriber::IntegrationSubscriber(ros::MultiThreadedSpinner* _spiner, CarInfo *_carInfo, StateManager* _stateManager)
+IntegrationSubscriber::IntegrationSubscriber(ros::MultiThreadedSpinner* _spiner, CarInfo *_carInfo, StateManager* _stateManager, ConfigLoader* _configLoader,MediaPlayer* _mediaPlayer)
 :spiner(_spiner),
 carInfo(_carInfo),
-stateManager(_stateManager)
+stateManager(_stateManager),
+configLoader(_configLoader),
+mediaPlayer(_mediaPlayer)
 {
+	fall_down_time=QTime::currentTime();
+	ttsDelayMap=configLoader->getTtsTimeSleep();
     subscriber = nodeHandle.subscribe(qPrintable(topicName), 100, &IntegrationSubscriber::subscribeCallBack,this );
     this->start();
 }
@@ -42,7 +46,7 @@ void IntegrationSubscriber::subscribeCallBack(const shuttle_monitor::IntergrateR
 	for ( int i=0; i< ps_num; i++) {
 		ROS_INFO("PERSON ID: %d", messages.ps_recog[i].ps_id);
 		if ( messages.ps_recog[i].ps_gender == "F") {
-			if ( messages.ps_recog[i].ps_age == "A") {
+			if ( messages.ps_recog[i].ps_age == "adult") {
 				a_f_num++;
 			}
 			else {
@@ -50,7 +54,7 @@ void IntegrationSubscriber::subscribeCallBack(const shuttle_monitor::IntergrateR
 			}
 		}
 		else {
-			if ( messages.ps_recog[i].ps_age == "A") {
+			if ( messages.ps_recog[i].ps_age == "adult") {
 				a_m_num++;
 			}
 			else {
@@ -74,6 +78,11 @@ void IntegrationSubscriber::subscribeCallBack(const shuttle_monitor::IntergrateR
 	if (standing) {
 		stateManager->changeWearBelt();
 	}
-	else {}
+	if (fall_down) {
+		stateManager->changeFallDown();
+		mediaPlayer->playMedia(States::FALL_DOWN);
+	}
+	if (dump) {
 
+	}
 }

@@ -1,0 +1,52 @@
+gpspos:
+  - Lat: 34.7521252
+    Lon: 127.7482172
+    UIx: 200
+    UIy: 180
+    pos: start
+  - Lat: 34.75025
+    Lon: 127.74867
+    UIx: 220
+    UIy: 280
+    pos: middle
+  - Lat: 34.7482139
+    Lon: 127.7468139
+    UIx: 140
+    UIy: 390
+    pos: curve
+  - Lat: 34.745250
+    Lon: 127.749682
+    UIx: 230
+    UIy: 540
+    pos: middle
+  - Lat: 34.74245
+    Lon: 127.75494
+    UIx: 430
+    UIy: 680
+    pos: middle
+  - Lat: 34.74553
+    Lon: 127.751033
+    UIx: 330
+    UIy: 540
+    pos: middle
+  - Lat: 34.746005
+    Lon: 127.751329
+    UIx: 270
+    UIy: 330
+    pos: sudden_stop
+  - Lat: 34.75226
+    Lon: 127.74835
+    UIx: 200
+    UIy: 180
+    pos: finish
+tts_time_sleep:
+  fall_down: 30
+  finish: 60
+  handle_crash: 20
+  sharp_turn: 5
+  surdden_stop: 5
+  wear_belt: 30
+position_resolution:
+  distance: 5
+carinfo:
+  carno: 0001

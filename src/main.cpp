@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	if( !ros::isInitialized() )
 	{
 		ROS_INFO("ros::Initializing....");
-		ros::init( argc, argv, "daq", ros::init_options::AnonymousName );
+		ros::init( argc, argv, "shuttle_monitor", ros::init_options::AnonymousName );
 
 		// if (!ros::master::check()) {
 		// 	ROS_INFO("ros::core startind.....");

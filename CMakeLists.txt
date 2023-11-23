@@ -20,6 +20,8 @@ add_message_files(
   Ps_recog.msg
   IntergrateRecognition.msg
   Can.msg
+  Car.msg
+  Gps.msg
   )
 
 generate_messages(
@@ -46,7 +48,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui Widgets Multimedia MultimediaWidgets REQUIRED)
 
 file(GLOB QT_FORMS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ui/*.ui)
 file(GLOB QT_RESOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} resources/*.qrc)
@@ -57,6 +59,8 @@ QT5_ADD_RESOURCES(QT_RESOURCES_CPP ${QT_RESOURCES})
 include_directories(
   ${Qt5Core_INCLUDE_DIRS}
   ${Qt5Gui_INCLUDE_DIRS}
+  ${Qt5Multimedia_INCLUDE_DIRS}
+  ${Qt5MultimediaWidgets_INCLUDE_DIRS}
   ${Qt5Widgets_INCLUDE_DIRS}
 )
 
@@ -87,8 +91,13 @@ set( QT_SOURCES
   src/PositionMapper.cpp
   src/Position.h
   src/Position.cpp
+  src/MediaPlayer.h
+  src/MediaPlayer.cpp
   src/images.qrc
-)
+  src/tts.qrc
+  src/ConfigLoader.h
+  src/ConfigLoader.cpp
+  )
 
 #set (CONFIG scripts/config.yml)
 ## Specify additional locations of header files
@@ -114,6 +123,8 @@ target_link_libraries(${PROJECT_NAME}
   Qt5::Core
   Qt5::Gui
   Qt5::Widgets
+  Qt5::Multimedia
+  Qt5::MultimediaWidgets
   libyaml-cpp.so
 )
 install(TARGETS ${PROJECT_NAME}

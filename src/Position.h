@@ -11,17 +11,20 @@
 
 class Position {
 	public :
-		Position(double lat, double lon, int x, int y);
+		Position(double lat, double lon, int x, int y, QString posAttr);
 		double distance(double lat2, double lon2, char unit);
 		int getX();
 		int getY();
+		QString getPosAttr();
 	private :
 	double deg2rad(double);
 	double rad2deg(double);
-		double latitude;
-		double longitude;
-		int x;
-		int y;
+	double latitude;
+	double longitude;
+	int x;
+	int y;
+	QString pos_attr;
+
 };
 
 

@@ -7,10 +7,12 @@
 #include "CanSubscriber.h"
 #include <sstream>
 
-CanSubscriber::CanSubscriber(ros::MultiThreadedSpinner* _spiner, CarInfo *_carInfo, StateManager* _stateManager)
+CanSubscriber::CanSubscriber(ros::MultiThreadedSpinner* _spiner, CarInfo *_carInfo, StateManager* _stateManager, ConfigLoader* _configLoader, MediaPlayer* _mediaPlayer)
 :spiner(_spiner),
 carInfo(_carInfo),
-stateManager(_stateManager)
+stateManager(_stateManager),
+configLoader(_configLoader),
+mediaPlayer(_mediaPlayer)
 {
     subscriber = nodeHandle.subscribe(qPrintable(topicName), 100, &CanSubscriber::subscribeCallBack,this );
     this->start();
@@ -30,31 +32,32 @@ void CanSubscriber::subscribeCallBack(const shuttle_monitor::Can& messages) {
     stringstream  ss;
     ss << messages;
     QString _data=QString::fromStdString(ss.str());
-	ROS_INFO("CanSubscriber::subscribeCallBack %s", qPrintable(_data));
+	// ROS_INFO("CanSubscriber::subscribeCallBack %s", qPrintable(_data));
 
-	if ( messages.veh_ctrl_mode) {
-		carInfo->setDriveMode("자동");
+	if ( messages.car.veh_ctrl_mode) {
+		carInfo->setDriveMode("자율");
 	}
 	else {
-		carInfo->setDriveMode("수동");
+		carInfo->setDriveMode("자율");
 	}
 
-	if ( messages.veh_driving_state == 2) {
+	if ( messages.car.veh_driving_state == 2) {
 		carInfo-> setDriveState("정차");
 	}
 	else {
-		if ( messages.veh_driving_state == 4) {
+		if ( messages.car.veh_driving_state == 4) {
 			carInfo-> setDriveState("주행");
 		}
 	}
 
-	if ( messages.emergency_stop) {
+	if ( messages.car.emergency_stop) {
 		carInfo->setEmergencyStop("비상정지");
+		//mediaPlayer->playMedia(States::SUDDEN_STOP);
 	}
 	else {
 		carInfo->setEmergencyStop("정상주행");
 	}
-	ROS_INFO("CanSubscriber::Battery %d", messages.battery_soc);
-	carInfo->setBettery(messages.battery_soc);
-	carInfo->setDriveSpeed(messages.veh_speed);
+	// ROS_INFO("CanSubscriber::Battery %d", messages.car.battery_soc);
+	carInfo->setBettery(messages.car.battery_soc);
+	carInfo->setDriveSpeed(messages.car.veh_speed);
 }

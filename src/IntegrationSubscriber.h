@@ -14,10 +14,11 @@
 #include <shuttle_monitor/IntergrateRecognition.h>
 #include "CarInfo.h"
 #include "StateManager.h"
-
+#include "MediaPlayer.h"
+#include "ConfigLoader.h"
 class IntegrationSubscriber : public QThread {
 public:
-    IntegrationSubscriber(ros::MultiThreadedSpinner*, CarInfo*, StateManager*);
+    IntegrationSubscriber(ros::MultiThreadedSpinner*, CarInfo*, StateManager*,ConfigLoader*, MediaPlayer*);
     void subscribeCallBack( const shuttle_monitor::IntergrateRecognition&);
     void run();
 
@@ -29,6 +30,10 @@ private:
     QString topicName="/iIntegrateRecognition";
 	CarInfo* carInfo=NULL;
 	StateManager* stateManager=NULL;
+	MediaPlayer* mediaPlayer=NULL;
+	ConfigLoader* configLoader=NULL;
+	QTime fall_down_time;
+	QMap<States, int> ttsDelayMap;
 };
 
 #endif

@@ -12,7 +12,7 @@
 
 class StateManager {
 public:
-	StateManager(Ui::MainMonitor *);
+	StateManager(Ui::MainMonitor *,QString);
 	~StateManager();
 	void changeOnBoading(int , int , int, int );
     void changeFinish();
