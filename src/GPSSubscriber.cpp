@@ -15,6 +15,9 @@ positionManager(_positionManager)
     this->start();
 }
 
+GPSSubscriber::~GPSSubscriber() {
+
+}
 void GPSSubscriber::run() {
     spiner->spin();
 }

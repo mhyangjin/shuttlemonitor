@@ -17,6 +17,7 @@
 class GPSSubscriber : public QThread {
 public:
     GPSSubscriber(ros::MultiThreadedSpinner*, PositionMapper*);
+	~GPSSubscriber();
     void subscribeCallBack(const sensor_msgs::NavSatFix::ConstPtr&);
     void run();
 

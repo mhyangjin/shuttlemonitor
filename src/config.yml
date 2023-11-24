@@ -1,6 +1,6 @@
 gpspos:
-  - Lat: 34.7521252
-    Lon: 127.7482172
+  - Lat: 34.75226
+    Lon: 127.74835
     UIx: 200
     UIy: 180
     pos: start
@@ -43,8 +43,8 @@ tts_time_sleep:
   fall_down: 30
   finish: 60
   handle_crash: 20
-  sharp_turn: 5
-  surdden_stop: 5
+  sharp_turn: 20
+  surdden_stop: 20
   wear_belt: 30
 position_resolution:
   distance: 5

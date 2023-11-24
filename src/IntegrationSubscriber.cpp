@@ -32,7 +32,7 @@ void IntegrationSubscriber::subscribeCallBack(const shuttle_monitor::IntergrateR
     stringstream  ss;
     ss << messages;
     QString _data=QString::fromStdString(ss.str());
-	ROS_INFO("IntergrateRecognition::subscribeCallBack %s", qPrintable(_data));
+	// ROS_INFO("IntergrateRecognition::subscribeCallBack %s", qPrintable(_data));
 
 	int ps_num=messages.ps_numb;
 	int a_m_num=0;
@@ -44,7 +44,7 @@ void IntegrationSubscriber::subscribeCallBack(const shuttle_monitor::IntergrateR
 	bool standing=false;
 
 	for ( int i=0; i< ps_num; i++) {
-		ROS_INFO("PERSON ID: %d", messages.ps_recog[i].ps_id);
+		// ROS_INFO("PERSON ID: %d", messages.ps_recog[i].ps_id);
 		if ( messages.ps_recog[i].ps_gender == "F") {
 			if ( messages.ps_recog[i].ps_age == "adult") {
 				a_f_num++;

@@ -15,7 +15,7 @@
 class MediaPlayer {
 public:
 	MediaPlayer(ConfigLoader*);
-
+	~MediaPlayer();
 	void playMedia(States states);
 
 private:

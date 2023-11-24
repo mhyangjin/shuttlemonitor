@@ -58,7 +58,9 @@ ConfigLoader::ConfigLoader(){
 }
 
 ConfigLoader::~ConfigLoader() {
-
+for (auto iter=positions.begin(); iter!=positions.end(); iter++) {
+        delete *iter;
+    }
 }
 
 QString ConfigLoader::getCarNo() {

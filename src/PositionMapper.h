@@ -23,7 +23,9 @@ private:
 
 	Ui::MainMonitor *ui;
 	QList<Position*> positions;
-	int latest_pos;
+	int curr_pos;
+	int before_pos;
+
 	int maxDistance=5; //버스 아이콘 위치를 조정할 거리(미터),5미터 안에 위치하면 아이콘을 옮긴다
 	ConfigLoader* configLoader=NULL;
 	MediaPlayer* mediaPlayer=NULL;

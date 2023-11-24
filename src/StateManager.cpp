@@ -31,10 +31,36 @@ StateManager::~StateManager() {
 //label_state_msg=총 00 명 탑승 중
 //----------message board
 //label_man_img show
+void StateManager::changeOnBoadingReset() {
+	changeManCount(adult_male, adult_female,child_male, child_female );
+}
 void StateManager::changeOnBoading(	int adult_male_count,
 									int adult_female_count,
 									int child_male_count,
 									int child_female_count){
+
+	if ( adult_male == adult_male_count
+		&& adult_female == adult_female_count
+		&& child_male == child_male_count
+		&& child_female == child_female_count) {
+		return;
+	}
+	else {
+		adult_male=adult_male_count;
+		adult_female=adult_female_count;
+		child_male=child_male_count;
+		child_female=child_female_count;
+
+		changeManCount(adult_male, adult_female,child_male, child_female );
+	}
+
+}
+
+void StateManager::changeManCount(	int adult_male_count,
+									int adult_female_count,
+									int child_male_count,
+									int child_female_count)   {
+
 	ROS_INFO("StateManager::changeOnBoading");
 	int adult_count=adult_male_count + adult_female_count;
 	int child_count=child_male_count + child_female_count;

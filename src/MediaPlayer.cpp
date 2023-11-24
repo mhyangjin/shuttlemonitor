@@ -27,6 +27,10 @@ MediaPlayer::MediaPlayer(ConfigLoader* _configLoader)
 	ttsDelayMap=configLoader->getTtsTimeSleep();
 
 }
+MediaPlayer::~MediaPlayer() {
+	delete qPlayList;
+	delete player;
+}
 void MediaPlayer::playMedia(States states) {
 
 

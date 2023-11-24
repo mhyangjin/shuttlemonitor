@@ -52,7 +52,6 @@ void CanSubscriber::subscribeCallBack(const shuttle_monitor::Can& messages) {
 
 	if ( messages.car.emergency_stop) {
 		carInfo->setEmergencyStop("비상정지");
-		//mediaPlayer->playMedia(States::SUDDEN_STOP);
 	}
 	else {
 		carInfo->setEmergencyStop("정상주행");
