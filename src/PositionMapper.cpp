@@ -36,6 +36,12 @@ void PositionMapper::setPosition(double lat, double lon) {
 			mediaPlayer->playMedia(States::SHARP_TURN);
 			return;
 		}
+		if (pos->getPosAttr()=="handle_crash" ) {
+			stateManager->changeHandleCrash();
+			mediaPlayer->playMedia(States::HANDLE_CRASH);
+			return;
+		}
+
 		if (before_pos > 0 &&  pos->getPosAttr()=="finish" ) {
 			stateManager->changeFinish();
 			mediaPlayer->playMedia(States::FINISH);
