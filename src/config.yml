@@ -13,7 +13,7 @@ gpspos:
     Lon: 127.7468139
     UIx: 140
     UIy: 390
-    pos: handle_crash
+    pos: curve
   - Lat: 34.745250
     Lon: 127.749682
     UIx: 230
@@ -24,8 +24,8 @@ gpspos:
     UIx: 430
     UIy: 680
     pos: middle
-  - Lat: 34.7433
-    Lon: 127.7540
+  - Lat: 34.74237
+    Lon: 127.7548
     UIx: 470
     UIy: 710
     pos: handle_crash
@@ -52,6 +52,6 @@ tts_time_sleep:
   surdden_stop: 20
   wear_belt: 30
 position_resolution:
-  distance: 6
+  distance: 5
 carinfo:
   carno: 0001
