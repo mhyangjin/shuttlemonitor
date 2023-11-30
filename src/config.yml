@@ -24,8 +24,8 @@ gpspos:
     UIx: 430
     UIy: 680
     pos: middle
-  - Lat: 34.7426
-    Lon: 127.7550
+  - Lat: 34.7433
+    Lon: 127.7540
     UIx: 470
     UIy: 710
     pos: handle_crash
