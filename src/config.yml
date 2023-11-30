@@ -52,6 +52,6 @@ tts_time_sleep:
   surdden_stop: 20
   wear_belt: 30
 position_resolution:
-  distance: 5
+  distance: 6
 carinfo:
   carno: 0001
