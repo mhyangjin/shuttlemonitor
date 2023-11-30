@@ -24,6 +24,7 @@ ConfigLoader::ConfigLoader(){
 			QString posinfo=QString::fromStdString(launchNode[i]["pos"].as<string>());
 			ROS_INFO("lat: %f",lat );
 			ROS_INFO("ui_x: %d",ui_x );
+			ROS_INFO("ui_x: %s",qPrintable(posinfo) );
 			positions.push_back( new Position(lat, log, ui_x,ui_y,posinfo));
         }
 

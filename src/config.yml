@@ -3,7 +3,7 @@ gpspos:
     Lon: 127.74835
     UIx: 200
     UIy: 180
-    pos: handle_crash
+    pos: start
   - Lat: 34.75025
     Lon: 127.74867
     UIx: 220

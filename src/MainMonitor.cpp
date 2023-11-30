@@ -52,7 +52,8 @@ void MainMonitor::fallDownClicked() {
 	stateManager->changeFallDown();
 }
 void MainMonitor::handleCrashClicked() {
-	stateManager->changeHandleCrash();
+	ROS_INFO("handleCrashClicked");
+	positionMapper->setPosition( 34.7433,  127.7540);
 }
 void MainMonitor::sharpTurnClicked() {
 	mediaPlayer->playMedia(States::SHARP_TURN);

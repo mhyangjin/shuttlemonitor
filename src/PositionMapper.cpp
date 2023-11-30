@@ -24,7 +24,7 @@ PositionMapper::~PositionMapper(){}
 void PositionMapper::setPosition(double lat, double lon) {
 	Position* pos=findclosedPosition(lat, lon);
 	if ( pos != NULL) {
-
+		ROS_INFO("FIND");
 		ui->label_car->move(pos->getX(),pos->getY());
 		if (pos->getPosAttr()=="sudden_stop" ) {
 			stateManager->changeSurddenStop();
@@ -60,8 +60,10 @@ Position* PositionMapper::findclosedPosition(double lat, double lon) {
 
 	//이전 위치부터 찾기
 	for ( int i=before_pos; i <positions.size(); i++) {
+		ROS_INFO("i - %d", i);
 		pos=positions.at(i);
 		distance = pos->distance(lat, lon, 'K') * 1000; //meter로 환산
+		ROS_INFO("distance - %f, %d", distance, maxDistance);
 		if (distance <= maxDistance) {
 			if ( before_pos == i) {
 				return NULL;
