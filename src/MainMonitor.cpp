@@ -24,13 +24,13 @@ MainMonitor::MainMonitor(QWidget *parent)
 	connect(ui->btn_belt, SIGNAL(clicked()), this, SLOT(wearBeltClicked()));
 	connect(ui->btn_curve, SIGNAL(clicked()), this, SLOT(sharpTurnClicked()));
 	connect(ui->btn_stop, SIGNAL(clicked()), this, SLOT(surddenStopClicked()));
-	// ui->btn_boarding->hide();
-	// ui->btn_finish->hide();
-	// ui->btn_handle->hide();
-	// ui->btn_falldown->hide();
-	// ui->btn_belt->hide();
-	// ui->btn_curve->hide();
-	// ui->btn_stop->hide();
+	ui->btn_boarding->hide();
+	ui->btn_finish->hide();
+	ui->btn_handle->hide();
+	ui->btn_falldown->hide();
+	ui->btn_belt->hide();
+	ui->btn_curve->hide();
+	ui->btn_stop->hide();
 
 	spiner= new ros::MultiThreadedSpinner(3);
 	canSubscriber = new CanSubscriber(spiner,carInfo, stateManager, configLoader,mediaPlayer );
