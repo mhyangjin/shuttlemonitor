@@ -13,7 +13,7 @@ gpspos:
     Lon: 127.7468139
     UIx: 140
     UIy: 390
-    pos: curve
+    pos: handle_crash
   - Lat: 34.745250
     Lon: 127.749682
     UIx: 230
